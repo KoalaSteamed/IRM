@@ -1,37 +1,50 @@
-## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/KoalaSteamed/IRM/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/KoalaSteamed/IRM/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+<html>
+<head>
+<title>Bitcoin Price Index Watcher in HTML5</title>
+<style type="text/css">
+  #data {
+    width: 400px;
+    border: 1px dashed black;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 10px;
+  }
+  #logo {
+    width: 320px;
+    height: 320px;
+    margin: 0 auto;
+    margin-top: 50px;
+    display: block;
+  }
+</style>
+</head>
+<body>
+  <img id="logo" src="https://www.ssaurel.com/cryptocoins/screenshots/web_hi_res_512.png" />
+  <div id="data" />
+  <script type="text/javascript">
+    var xmlhttp = new XMLHttpRequest();
+    var url = "https://api.coindesk.com/v1/bpi/currentprice.json";
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4  &&  this.status == 200) {
+        var json = JSON.parse(this.responseText);
+        parseJson(json);
+      }		
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+    function parseJson(json) {
+      var time = "<b>Last Updated : " + json["time"]["updated"] + "</b>";
+      var usdValue = "1 BTC equals to $" + json["bpi"]["USD"]["rate"];
+      var gbpValue = "1 BTC equals to &pound;" + json["bpi"]["GBP"]["rate"];
+      var euroValue = "1 BTC equals to &euro;" + json["bpi"]["EUR"]["rate"];
+      document.getElementById("data").innerHTML = time + 
+	       "<br /><br />" + usdValue + 
+		   "<br />" + gbpValue + 
+		   "<br />" + euroValue;
+}
+</script>
+</body>
+</html>
