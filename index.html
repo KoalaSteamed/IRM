@@ -38,7 +38,7 @@
     xmlhttp.send();
     function parseJson(json) {
      // var usdValue = "Current ROCK2 Price $" + json["ice-rock-mining"]["usd"];
-      var blockReward = "Current ROCK2 Price $" + json["Bitcoin"]["block_reward"];
+      var blockReward = "Current ROCK2 Price $" + json["coins"]["Bitcoin"]["block_reward"];
       document.getElementById("data").innerHTML = blockReward;
 }
 </script>
