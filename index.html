@@ -26,6 +26,7 @@
   <script type="text/javascript">
     var xmlhttp = new XMLHttpRequest();
     var url = "https://api.coingecko.com/api/v3/simple/price?ids=ice-rock-mining&vs_currencies=usd";
+    var urlBlockReward = "https://whattomine.com/asic.json";
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4  &&  this.status == 200) {
         var json = JSON.parse(this.responseText);
@@ -33,10 +34,12 @@
       }		
     };
     xmlhttp.open("GET", url, true);
+     xmlhttp.open("GET", urlBlockReward, true);
     xmlhttp.send();
     function parseJson(json) {
       var usdValue = "Current ROCK2 Price $" + json["ice-rock-mining"]["usd"];
-      document.getElementById("data").innerHTML = usdValue;
+      var blockReward = "Current ROCK2 Price $" + json["Bitcoin"]["block_reward"];
+      document.getElementById("data").innerHTML = usdValue +blockReward;
 }
 </script>
 </body>
