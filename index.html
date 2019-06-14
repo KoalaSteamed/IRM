@@ -35,7 +35,7 @@
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
     function parseJson(json) {
-      var usdValue = "Current ROCK2 Price $" + json["ice-rock-mining"]["usd"]*2;
+      var usdValue = "Current ROCK2 Price $" + json["ice-rock-mining"]["usd"];
       document.getElementById("data").innerHTML = usdValue;
 }
 </script>
