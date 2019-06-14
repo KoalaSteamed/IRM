@@ -1,5 +1,5 @@
 <html>
-<head>Test10
+<head>Test101
 <title>Bitcoin Price Index Watcher in HTML5</title>
 <style type="text/css">
   #data {
@@ -40,7 +40,7 @@
     function parseJson(json) {
       var usdValue = "Current ROCK2 Price $" + json["ice-rock-mining"]["usd"];
       var diff = "Current ROCK2 Price $" + json["data"]["difficulty"];
-      document.getElementById("data").innerHTML = diff;
+      document.getElementById("data").innerHTML = diff + usdValue;
 }
 </script>
 </body>
