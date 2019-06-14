@@ -35,7 +35,7 @@
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
     function parseJson(json) {
-      var usdValue = "1 BTC equals to $" + json["ice-rock-mining"]["usd"];
+      var usdValue = "Current ROCK2 Price $" + json["ice-rock-mining"]["usd"]*2;
       document.getElementById("data").innerHTML = usdValue;
 }
 </script>
