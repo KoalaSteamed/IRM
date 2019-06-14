@@ -26,7 +26,7 @@
   <script type="text/javascript">
     var xmlhttp = new XMLHttpRequest();
      //var url = "https://api.coingecko.com/api/v3/simple/price?ids=ice-rock-mining&vs_currencies=usd";
-    var url = "https://blockexplorer.com/api/status?q=getDifficulty";
+    var url = "https://chain.api.btc.com/v3/block/latest";
     //var url = "https://api.coingecko.com/api/v3/simple/price?ids=ice-rock-mining&vs_currencies=usd";
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4  &&  this.status == 200) {
@@ -38,7 +38,7 @@
     xmlhttp.send();
     function parseJson(json) {
       //var usdValue = "Current ROCK2 Price $" + json["ice-rock-mining"]["usd"];
-      var diff = "Current ROCK2 Price $" + json["difficulty"];
+      var diff = "Current ROCK2 Price $" + json["data"]["difficulty"];
       document.getElementById("data").innerHTML = diff;
 }
 </script>
