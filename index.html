@@ -1,5 +1,5 @@
 <html>
-<head>Test7
+<head>Test8
 <title>Bitcoin Price Index Watcher in HTML5</title>
 <style type="text/css">
   #data {
@@ -25,7 +25,7 @@
   <div id="data" />
   <script type="text/javascript">
     var xmlhttp = new XMLHttpRequest();
-     //var url = "https://api.coingecko.com/api/v3/simple/price?ids=ice-rock-mining&vs_currencies=usd";
+     var url = "https://api.coingecko.com/api/v3/simple/price?ids=ice-rock-mining&vs_currencies=usd";
     var url = "https://chain.api.btc.com/v3/block/latest";
     //var url = "https://api.coingecko.com/api/v3/simple/price?ids=ice-rock-mining&vs_currencies=usd";
     xmlhttp.onreadystatechange = function() {
@@ -37,7 +37,7 @@
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
     function parseJson(json) {
-      //var usdValue = "Current ROCK2 Price $" + json["ice-rock-mining"]["usd"];
+      var usdValue = "Current ROCK2 Price $" + json["ice-rock-mining"]["usd"];
       var diff = "Current ROCK2 Price $" + json["data"]["difficulty"];
       document.getElementById("data").innerHTML = diff;
 }
