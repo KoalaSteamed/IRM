@@ -1,49 +1,31 @@
 <html>
-<head>Test23
+<head>Test24
 <title>Bitcoin Price Index Watcher in HTML5</title>
 <style type="text/css">
   #data {
-    width: 400px;
-    border: 1px dashed black;
-    font-size: 20px;
     text-align: center;
-    margin: 0 auto;
-    margin-top: 50px;
-    padding: 10px;
-  }
-  #logo {
-    width: 320px;
-    height: 320px;
-    margin: 0 auto;
-    margin-top: 50px;
-    display: block;
   }
 </style>
 </head>
 <body>
-  <!-- <img id="logo" src="https://www.ssaurel.com/cryptocoins/screenshots/web_hi_res_512.png" /> -->
-  <div id="data1" />
+  <div id="data" />
   <script type="text/javascript">
     var xmlhttp = new XMLHttpRequest();
-     var urlA = "https://api.coingecko.com/api/v3/simple/price?ids=ice-rock-mining&vs_currencies=usd";
-    //var urlB = "https://chain.api.btc.com/v3/block/latest";
-    //var url = "https://api.coingecko.com/api/v3/simple/price?ids=ice-rock-mining&vs_currencies=usd";
+     var url = "https://api.coingecko.com/api/v3/simple/price?ids=ice-rock-mining&vs_currencies=usd";
+    //var url = "https://chain.api.btc.com/v3/block/latest";
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4  &&  this.status == 200) {
         var json = JSON.parse(this.responseText);
         parseJson(json);
       }		
     };
-    xmlhttp.open("GET", urlA, true);
-    //xmlhttp.open("GET", urlB, true);
+    xmlhttp.open("GET", url, true);
     xmlhttp.send();
     function parseJson(json) {
-      var usdValue = "Current ROCK2 Price $" + json["ice-rock-mining"]["usd"];
-      //var diff = "Current ROCK2 Price $" + json["data"]["difficulty"];
-      document.getElementById("data1").innerHTML = usdValue;    
+      var btcValue = "Current Bitcoin Price is $" + json["ice-rock-mining"]["usd"];
+      //var diffValue = "Current Bitcoin difficulty is: " + json["data"]["difficulty"];
+      document.getElementById("data").innerHTML = usdValue + diffValue;    
 }
- 
-
 </script>
 </body>
 </html>
