@@ -1,29 +1,68 @@
-
 <html>
-<head>Test21
+<head>Test22
 <title>Bitcoin Price Index Watcher in HTML5</title>
+<style type="text/css">
+  #data {
+    width: 400px;
+    border: 1px dashed black;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 10px;
+  }
+  #logo {
+    width: 320px;
+    height: 320px;
+    margin: 0 auto;
+    margin-top: 50px;
+    display: block;
+  }
+</style>
+</head>
 <body>
-  <script>  
-  $.getJSON('https://api.unsplash.com/users/brianhaferkamp/likes/?client_id=9da242ad85084ad7ca951738b8e7d9478fd637ba6d41cf835be09e7e1628c9dc', function(data) {
-  console.log(data);
-  
-  $.each(data, function(index, value) {
-    console.log(value);
-    
-    var name = value.user.name;
-    var bio = value.user.bio;
-    var imageURL = value.urls.regular;
-    
-    // $('.name').text(name);
-    // $('.bio').text(bio);
-    // $('.image img').attr('src', imageURL);
-    
-    $('.output').append('<h1 class="name">' + name + '</h1><h2 class="bio">' + bio + '</h2><div class="image"><img src="' + imageURL + '"/></div>');
-  });
-});
-
+  <!-- <img id="logo" src="https://www.ssaurel.com/cryptocoins/screenshots/web_hi_res_512.png" /> -->
+  <div id="data1" />
+  <script type="text/javascript">
+    var xmlhttp = new XMLHttpRequest();
+     var urlA = "https://api.coingecko.com/api/v3/simple/price?ids=ice-rock-mining&vs_currencies=usd";
+    //var urlB = "https://chain.api.btc.com/v3/block/latest";
+    //var url = "https://api.coingecko.com/api/v3/simple/price?ids=ice-rock-mining&vs_currencies=usd";
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4  &&  this.status == 200) {
+        var json = JSON.parse(this.responseText);
+        parseJson(json);
+      }		
+    };
+    xmlhttp.open("GET", urlA, true);
+    //xmlhttp.open("GET", urlB, true);
+    xmlhttp.send();
+    function parseJson(json) {
+      var usdValue = "Current ROCK2 Price $" + json["ice-rock-mining"]["usd"];
+      //var diff = "Current ROCK2 Price $" + json["data"]["difficulty"];
+      document.getElementById("data1").innerHTML = usdValue;    
+}
+      <div id="data2" />
+  <script type="text/javascript">
+    var xmlhttp = new XMLHttpRequest();
+     //var urlA = "https://api.coingecko.com/api/v3/simple/price?ids=ice-rock-mining&vs_currencies=usd";
+    var urlB = "https://chain.api.btc.com/v3/block/latest";
+    //var url = "https://api.coingecko.com/api/v3/simple/price?ids=ice-rock-mining&vs_currencies=usd";
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4  &&  this.status == 200) {
+        var json = JSON.parse(this.responseText);
+        parseJson(json);
+      }		
+    };
+    //xmlhttp.open("GET", urlA, true);
+    xmlhttp.open("GET", urlB, true);
+    xmlhttp.send();
+    function parseJson(json) {
+      //var usdValue = "Current ROCK2 Price $" + json["ice-rock-mining"]["usd"];
+      var diff = "Current ROCK2 Price $" + json["data"]["difficulty"];
+      document.getElementById("data2").innerHTML = usdValue;    
+}
 
 </script>
-  .output
 </body>
 </html>
