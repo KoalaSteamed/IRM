@@ -10,12 +10,12 @@
 <body>
   <div id="data" />
   <script type="text/javascript">
-const url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd';
+var url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd';
 
 fetch(url)
     .then(response=>response.json())
     .then(data=>{
-        const text = "Current Bitcoin Price is $" + json.bitcoin.usd;
+        var text = "Current Bitcoin Price is $" + json.bitcoin.usd;
         document.getElementById("data").innerHTML = text; 
     })    
 </script>
