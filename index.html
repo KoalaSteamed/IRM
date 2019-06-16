@@ -13,9 +13,9 @@
 var url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd';
 
 fetch(url)
-    .then(response=>response.JSON())
+    .then(response=>response.json())
     .then(data=>{
-        var text = "Current Bitcoin Price is $" + JSON.bitcoin.usd;
+        var text = "Current Bitcoin Price is $" + json.bitcoin.usd;
         document.getElementById("data").innerHTML = text; 
     })    
 </script>
