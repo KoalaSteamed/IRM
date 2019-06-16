@@ -1,5 +1,5 @@
 <html>
-<head>Test29
+<head>Test30
 <title>Bitcoin Price Index Watcher in HTML5</title>
 <style type="text/css">
   #data {
@@ -10,12 +10,12 @@
 <body>
   <div id="data" />
   <script type="text/javascript">
-const url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd'
+const url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd';
 
 fetch(url)
     .then(response=>response.json())
     .then(data=>{
-        const text = "Current Bitcoin Price is $" + json.bitcoin.usd
+        const text = "Current Bitcoin Price is $" + json.bitcoin.usd;
         document.getElementById("data").innerHTML = text; 
     })    
 </script>
