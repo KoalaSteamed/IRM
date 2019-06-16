@@ -1,5 +1,5 @@
 <html>
-<head>Test35
+<head>Test36
 <title>Bitcoin Price Index Watcher in HTML5</title>
 <style type="text/css">
   #data {
@@ -10,13 +10,13 @@
 <body>
   <div id="data" />
   <script type="text/javascript">
-var url = "https://chain.api.btc.com/v3/block/latest";
+const url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd';
 
 fetch(url)
     .then(response=>response.json())
     .then(data=>{
-        var diffValue = "Current Bitcoin difficulty is: " + json["data"]["difficulty"];
-        document.getElementById("data").textContent = diffValue;
+        const text = "Current Bitcoin Price is $" + data.bitcoin.usd;
+        document.getElementById("data").textContent = text;
     })    
 </script>
 </body>
