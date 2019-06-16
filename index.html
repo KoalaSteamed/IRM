@@ -23,7 +23,7 @@ fetch(urlA)
     .then(response=>response.json())
     .then(data=>{
         const diffValue = "Current Bitcoin Price is $" + data.data.difficulty
-        document.getElementById("data").textContent = text
+        document.getElementById("data").textContent = diffValue
     }) 
 </script>
 </body>
