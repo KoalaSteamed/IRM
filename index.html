@@ -10,7 +10,10 @@
 <body>
   <div id="data" />
   <script type="text/javascript">
-const url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd'
+var text =1;
+    var diffValue =1;
+    
+    const url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd'
 fetch(url)
     .then(response=>response.json())
     .then(data=>{
@@ -21,9 +24,9 @@ const urlA = 'https://chain.api.btc.com/v3/block/latest'
 fetch(urlA)
     .then(response=>response.json())
     .then(data=>{
-        var diffValue = "Current Bitcoin Price is $" + data.data.difficulty
-        
+        var diffValue = "Current Bitcoin Price is $" + data.data.difficulty        
     }) 
+    
     document.getElementById("data").innerHTML = text + diffValue; 
 </script>
 </body>
