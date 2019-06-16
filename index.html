@@ -1,5 +1,5 @@
 <html>
-<head>Test27
+<head>Test28
 <title>Bitcoin Price Index Watcher in HTML5</title>
 <style type="text/css">
   #data {
@@ -16,7 +16,7 @@ fetch(url)
     .then(response=>response.json())
     .then(data=>{
         const text = "Current Bitcoin Price is $" + json.bitcoin.usd
-        document.getElementById("data").textContent = text
+        document.getElementById("data").textContent = text; 
     })    
 </script>
 </body>
