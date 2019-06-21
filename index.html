@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Promise all() and Fetch3</title>
+    <title>Promise all() and Fetch4</title>
     <meta name="viewport" content="width=device-width">
     <style>
         p{
@@ -23,12 +23,12 @@
         let log = console.log;
         
         let datafile1 = fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
-        let datafile2 = fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+        let datafile2 = fetch('https://chain.api.btc.com/v3/block/latest');
         
         Promise.all([datafile1, datafile2])
         .then( files =>{
             files.forEach(file=>{
-                process( file.json() );
+                process1( file.json() );
             })
             //files[0].json()
             //files[1].json()
@@ -40,7 +40,7 @@
         let process = (prom) =>{
             prom.then(data=>{
                 let p = document.createElement('p');
-                p.textContent = data.bitcoin;
+                p.textContent = data.bitcoin.usd + data.data.difficulty;
                 document.getElementById('output').appendChild(p);
             })
         }
