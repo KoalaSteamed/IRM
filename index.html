@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Promise all() and Fetch</title>
+    <title>Promise all() and Fetch3</title>
     <meta name="viewport" content="width=device-width">
     <style>
         p{
@@ -40,7 +40,7 @@
         let process = (prom) =>{
             prom.then(data=>{
                 let p = document.createElement('p');
-                p.textContent = data.bitcoin.usd;
+                p.textContent = data.bitcoin;
                 document.getElementById('output').appendChild(p);
             })
         }
