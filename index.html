@@ -11,23 +11,30 @@
   <div id="data" />
   
   <script type="text/javascript">
-    const urlA = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd'
-fetch(urlA)
-    .then(response=>response.json())
-    .then(json=>{
-        const btcValue = "Current Bitcoin Price is $" + json.bitcoin.usd
-    })    
+let output1
+let output2
+const apiEndpoints = [
+    'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd',
+    'https://chain.api.btc.com/v3/block/latest'
+]
 
-const urlB = 'https://chain.api.btc.com/v3/block/latest'
-fetch(urlB)
-    .then(response=>response.json())
-    .then(json=>{
-        const diffValue = "Current Bitcoin Price is $" + json.data.difficulty        
-    }) 
-    var output1 = diffValue*5
-    var output2 = btcValue*diffValue
-    document.getElementById("data").textContent = output1 + "<br />" + output2 
+function loadApiData(url) {
+    return fetch(url).then(response => response.json())
+}
+
+Promise.all(apiEndpoints.map(loadApiData))
+    .then(data=>{
+        output1 = data[1] // do math stuff here
+        output2 =  data[0]// do math stuff here
+        stuffToDoAfterLoadedData()
+    })
+
+
+function stuffToDoAfterLoadedData(){
+    document.getElementById("data").textContent = output1 + output2 
+}
 </script>
+
   
 </body>
 </html>
