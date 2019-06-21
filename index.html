@@ -34,24 +34,37 @@ function stuffToDoAfterLoadedData(data) {
     const marketPriceROCK2 = data[2]
     
     //constants
+    const averageDaysMonth = 30.44
     const blockReward = 13
     const totalTokens = 15724272
-    const asic_S9_Count = 2000
-    const asic_T17_Count = 600
-    const monthlyProfitToken =1
+    const asic_S9_Count = 1960
+    const asic_T17_Count = 0
     const miningEfficiency = 0.704
-    
     const electricityPrice = 0.0422
     
+    const investorProft = 0.72
+    const reinvestProfit = 0.18
+    const iceRockManagementProfit = 0.1
+    
+    //ASIC S9
     const asic_S9_Revenue = (blockReward*btcPrice)/(currentDifficulty*(2**32)/(13500*1000000000)/86400)
-    const asic_S9_Expense = ( electricityPrice *1323*24)/1000
-    const asic_S9_Profit = asic_S9_Revenue - asic_S9_Expense
-    const asic_T17_Revenue = (blockReward * btcPrice) / (currentDifficulty * (2**32)/(40000*1000000000)/86400)
-    const asic_T17_Expense = ( electricityPrice *2200*24)/1000
-    const asic_T17_Profit = asic_T17_Revenue - asic_T17_Expense
+    const asic_S9_Expense = (electricityPrice *1323*24)/1000
+    const asic_S9_Profit = asic_S9_Revenue-asic_S9_Expense
+    
+    //ASIC T17
+    const asic_T17_Revenue = (blockReward*btcPrice)/(currentDifficulty*(2**32)/(40000*1000000000)/86400)
+    const asic_T17_Expense = (electricityPrice*2200*24)/1000
+    const asic_T17_Profit = asic_T17_Revenue-asic_T17_Expense
     
     const totalMonthlyRevenue = ((asic_S9_Revenue*asic_S9_Count)+(asic_T17_Revenue*asic_T17_Count))*30.44*miningEfficiency
     const totalMonthlyProfit = ((asic_S9_Profit*asic_S9_Count)+(asic_T17_Profit*asic_T17_Count))*30.44*miningEfficiency
+    const totalMonthlyElectricity = ((asic_S9_Expense*asic_S9_Count)+(asic_T17_Expense*asic_T17_Count))*30.44
+    
+    //Percentages
+    const operatingCostPercentage = totalMonthlyElectricity/totalMonthlyRevenue
+    const investorProfitPercentage = (1 - operatingCostPercentage)*investorProft
+    
+    const monthlyProfitPerToken = (investorProfitPercentage*totalMonthlyRevenue)/totalTokens
     
     //outputs
     const tokensHeld = 1000
@@ -65,7 +78,7 @@ function stuffToDoAfterLoadedData(data) {
 
     document.getElementById("results").textContent = ` ${output1}
     ${output2}
-    ${totalMonthlyRevenue}`
+    ${investorProfitPercentage}`
 }
 </script>
 
