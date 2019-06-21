@@ -40,7 +40,7 @@
         let process = (prom) =>{
             prom.then(data=>{
                 let p = document.createElement('p');
-                p.textContent = data.bitcoin.usd + data.data.difficulty;
+                p.textContent = data.bitcoin.usd;
                 document.getElementById('output').appendChild(p);
             })
         }
