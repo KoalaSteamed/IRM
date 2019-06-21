@@ -1,5 +1,5 @@
 <html>
-<head>Test47
+<head>Test48
 <title>Bitcoin Price Index Watcher in HTML5</title>
 <style type="text/css">
   #data {
@@ -25,10 +25,9 @@ function loadApiData(url) {
 Promise.all(apiEndpoints.map(loadApiData))
     .then(stuffToDoAfterLoadedData)
 
-
-function stuffToDoAfterLoadedData(jsonData) {
-    const output1 = jsonData[1] * 5
-    const output2 = jsonData[0] * jsonData[1]
+function stuffToDoAfterLoadedData(data) {
+    const output1 = data[1] * 5
+    const output2 = data[0] * data[1]
 
     document.getElementById("data").textContent = `${output1}
     ${output2}`
