@@ -27,8 +27,8 @@ Promise.all(apiEndpoints.map(loadApiData))
 
 
 function stuffToDoAfterLoadedData(data) {
-    const output1 = data[1] * 5
-    const output2 = data[0] * data[1]
+    const output1 = data.data.difficulty[1] * 5
+    const output2 = data.bitcoin.usd[0] * data[1]
 
     document.getElementById("data").textContent = `${output1}
     ${output2}`
