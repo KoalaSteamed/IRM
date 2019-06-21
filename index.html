@@ -15,16 +15,12 @@
 function round(value, precision) {
     var multiplier = Math.pow(10, precision || 0);
     return Math.round(value * multiplier) / multiplier;
+    
 }
-
-let output1
-let output2
-let tokensHeld
 const apiEndpoints = [
     'https://chain.api.btc.com/v3/block/latest',
     'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd',
-    'https://api.coingecko.com/api/v3/simple/price?ids=ice-rock-mining&vs_currencies=usd'
-    
+    'https://api.coingecko.com/api/v3/simple/price?ids=ice-rock-mining&vs_currencies=usd'    
 ]
 
 function loadApiData(url) {
@@ -35,7 +31,7 @@ Promise.all(apiEndpoints.map(loadApiData))
     .then(stuffToDoAfterLoadedData)
 
 function stuffToDoAfterLoadedData(data) {
-    //Data In
+    //Data in
     const currentDifficulty = data[0]["data"]["difficulty"]
     const marketPriceBTC = data[1]["bitcoin"]["usd"]
     const marketPriceROCK2 = data[2]["ice-rock-mining"]["usd"]
@@ -78,7 +74,7 @@ function stuffToDoAfterLoadedData(data) {
     //outputs
     const tokensHeld = 1000
     const tokenValue = tokensHeld*marketPriceROCK2
-    const output1 = currentDifficulty 
+    const output1 = currentDifficulty + "\n" 
     const output2 = marketPriceBTC
     const monthlyProfit = Math.round(tokensHeld * monthlyProfitPerToken*100)/100
     const monthlyROI = Math.round((monthlyProfit*10000)/tokenValue)/100
@@ -87,8 +83,9 @@ function stuffToDoAfterLoadedData(data) {
     
 
     document.getElementById("results").textContent = `
-    ${marketPriceBTC}
-    ${output2}
+    ${output1}
+    ${marketPriceROCK2}
+    Per 1000 tokens
     Monthly Profit: $${monthlyProfit} ROI: ${monthlyROI}%
     Yearly Profit: $${yearlyProfit} ROI: ${yearlyROI}%`
 }
