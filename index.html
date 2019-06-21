@@ -1,5 +1,5 @@
 <html>
-<head>Test49
+<head>Test47
 <title>Bitcoin Price Index Watcher in HTML5</title>
 <style type="text/css">
   #data {
@@ -16,6 +16,7 @@ let output2
 const apiEndpoints = [
     'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd',
     'https://chain.api.btc.com/v3/block/latest'
+    //https://chain.api.btc.com/v3/block/latest
 ]
 
 function loadApiData(url) {
@@ -23,15 +24,16 @@ function loadApiData(url) {
 }
 
 Promise.all(apiEndpoints.map(loadApiData))
-    .then(data=>{
-        output1 = data[1] // do math stuff here
-        output2 =  data[0]// do math stuff here
-        stuffToDoAfterLoadedData()
-    })
+    .then(stuffToDoAfterLoadedData)
 
+function stuffToDoAfterLoadedData(data) {
+    const c1 = 100
+    const output1 = data[1].data.difficulty * 5
+    const output2 = data[0].bitcoin.usd * c1
+    
 
-function stuffToDoAfterLoadedData(){
-    document.getElementById("data").textContent = output1 + "<br />" + output2 
+    document.getElementById("data").textContent = `${output1}
+    ${output2}`
 }
 </script>
 
