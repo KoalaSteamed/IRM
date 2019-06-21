@@ -28,7 +28,7 @@ Promise.all(apiEndpoints.map(loadApiData))
 
 function stuffToDoAfterLoadedData(jsonData) {
     const output1 = jsonData[1].data.difficulty * 5
-    const output2 = jsonData[0].bitcoin.usd * jsonData[1]
+    const output2 = jsonData[0].bitcoin.usd * jsonData[1].data.difficulty
 
     document.getElementById("data").textContent = `${output1}
     ${output2}`
