@@ -16,8 +16,10 @@ let output1
 let output2
 let tokensHeld
 const apiEndpoints = [
+    'https://chain.api.btc.com/v3/block/latest',
     'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd',
-    'https://chain.api.btc.com/v3/block/latest'
+    'https://api.coingecko.com/api/v3/simple/price?ids=ice-rock-mining&vs_currencies=usd'
+    
 ]
 
 function loadApiData(url) {
@@ -29,9 +31,9 @@ Promise.all(apiEndpoints.map(loadApiData))
 
 function stuffToDoAfterLoadedData(data) {
     //Data In
-    const currentDifficulty = data[1].data.difficulty
-    const btcPrice = data[0].bitcoin.usd
-    const marketPriceROCK2 = data[2]
+    const currentDifficulty = data[0].data.difficulty
+    const btcPrice = data[1].bitcoin.usd
+    const marketPriceROCK2 = data[2].ice-rock-mining.usd
     
     //constants
     const averageDaysMonth = 30.44
@@ -42,6 +44,7 @@ function stuffToDoAfterLoadedData(data) {
     const miningEfficiency = 0.704
     const electricityPrice = 0.0422
     
+    //Profit % shares
     const investorProft = 0.72
     const reinvestProfit = 0.18
     const iceRockManagementProfit = 0.1
@@ -56,6 +59,7 @@ function stuffToDoAfterLoadedData(data) {
     const asic_T17_Expense = (electricityPrice*2200*24)/1000
     const asic_T17_Profit = asic_T17_Revenue-asic_T17_Expense
     
+    //Monthly calculation totals
     const totalMonthlyRevenue = ((asic_S9_Revenue*asic_S9_Count)+(asic_T17_Revenue*asic_T17_Count))*30.44*miningEfficiency
     const totalMonthlyProfit = ((asic_S9_Profit*asic_S9_Count)+(asic_T17_Profit*asic_T17_Count))*30.44*miningEfficiency
     const totalMonthlyElectricity = ((asic_S9_Expense*asic_S9_Count)+(asic_T17_Expense*asic_T17_Count))*30.44
@@ -68,17 +72,18 @@ function stuffToDoAfterLoadedData(data) {
     
     //outputs
     const tokensHeld = 1000
+    const tokenValue = tokensHeld
     const output1 = currentDifficulty 
     const output2 = btcPrice
-    const monthlyProfit = tokensHeld * monthlyProfitToken
+    const monthlyProfit = tokensHeld * monthlyProfitPerToken
     const monthlyROI = 1
     const yearlyProfit = 1 
-    const yearlyROI =1
+    const yearlyROI = 1
     
 
-    document.getElementById("results").textContent = ` ${output1}
+    document.getElementById("results").textContent = ` ${btcPrice}
     ${output2}
-    ${investorProfitPercentage}`
+    ${monthlyProfit}`
 }
 </script>
 
