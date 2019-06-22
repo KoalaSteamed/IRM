@@ -1,6 +1,6 @@
 <html>
-<head>Test47
-<title>Bitcoin Price Index Watcher in HTML5</title>
+<head>
+<title>Ice Rock Mining ROI</title>
 <style type="text/css">
   #results {
     white-space: pre;
@@ -12,11 +12,6 @@
   <div id="results" />
   
   <script type="text/javascript">
-function round(value, precision) {
-    var multiplier = Math.pow(10, precision || 0);
-    return Math.round(value * multiplier) / multiplier;
-    
-}
 const apiEndpoints = [
     'https://chain.api.btc.com/v3/block/latest',
     'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd',
@@ -81,8 +76,7 @@ function stuffToDoAfterLoadedData(data) {
     const yearlyProfit = Math.round(monthlyProfit*12*100)/100
     const yearlyROI = Math.round(monthlyROI*12*100)/100
     
-
-    document.getElementById("results").textContent =`   ${output1}
+    document.getElementById("results").textContent =`   ${totalMonthlyElectricity}
     ${output1}
     ${marketPriceROCK2}
     Per 1000 tokens
