@@ -86,7 +86,8 @@ layout: default
 const apiEndpoints = [
     'https://chain.api.btc.com/v3/block/latest',
     'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd',
-    'https://api.coingecko.com/api/v3/simple/price?ids=ice-rock-mining&vs_currencies=usd'
+    'https://api.coingecko.com/api/v3/simple/price?ids=ice-rock-mining&vs_currencies=usd',
+    'https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd'
     //'https://whattomine.com/asic.json'
 ]
 
@@ -104,6 +105,7 @@ function stuffToDoAfterLoadedData(data) {
     const rewardFees = data[0]["data"]["reward_fees"]
     const marketPriceBTC = data[1]["bitcoin"]["usd"]
     const marketPriceROCK2 = data[2]["ice-rock-mining"]["usd"]
+    const marketPriceETH = data[3]["ethereum"]["usd"]
     
     //constants
     const averageDaysMonth = 30.44
@@ -144,11 +146,14 @@ function stuffToDoAfterLoadedData(data) {
     const monthlyProfitPerToken = (investorProfitPercentage*totalMonthlyRevenue)/totalTokens
     const output1 = currentDifficulty + "\n" 
     const output2 = marketPriceBTC
-    const dailyProfit = 1
-    const dailyROI = 1
+    const dailyProfit = Math.round(((tokensHeld * monthlyProfitPerToken)/30.44)*100)/100
+    const dailyETH = Math.round((dailyProfit/marketPriceETH)*10000)/10000
+    const dailyROI = Math.round((dailyProfit*10000)/tokenValue)/100
     const monthlyProfit = Math.round(tokensHeld * monthlyProfitPerToken*100)/100
+    const monthlyETH = Math.round((monthlyProfit/marketPriceETH)*10000)/10000
     const monthlyROI = Math.round((monthlyProfit*10000)/tokenValue)/100
     const yearlyProfit = Math.round(monthlyProfit*12*100)/100
+    const yearlyETH = Math.round((yearlyProfit/marketPriceETH)*10000)/10000
     const yearlyROI = Math.round(monthlyROI*12*100)/100
     
     /*document.getElementById("results").textContent =`   ${blockReward}
@@ -158,9 +163,9 @@ function stuffToDoAfterLoadedData(data) {
     Monthly Profit: $${monthlyProfit} ROI: ${monthlyROI}%
     Yearly Profit: $${yearlyProfit} ROI: ${yearlyROI}%`
     */
-            var array = [[dailyProfit,    dailyROI,     dailyROI],
-                         [monthlyProfit,  monthlyROI,   monthlyROI],
-                         [yearlyProfit,   yearlyROI,    yearlyROI]],
+            var array = [["$"+dailyProfit,    dailyETH+" ETH",     dailyROI+"% ROI"],
+                         ["$"+monthlyProfit,  monthlyETH+" ETH",   monthlyROI+"% ROI"],
+                         ["$"+yearlyProfit,   yearlyETH+" ETH",    yearlyROI+"% ROI"]],
 
               table = document.getElementById("table1");
               for(var i = 0; i < table1.rows.length; i++)
