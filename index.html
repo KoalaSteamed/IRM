@@ -5,12 +5,8 @@ layout: default
 <head>
 <title>Ice Rock Mining ROI</title>
 <style type="text/css">
-  #results {
-    white-space: pre;
-    text-align: center;
-  }
 
-  table.table1{
+  #table1{
     font-family: "Trebuchet MS", sans-serif;
     font-size: 16px;
     font-weight: bold;
@@ -20,7 +16,7 @@ layout: default
     border-spacing: 2px !important;
     text-align: center;
 }
-.table1 tbody th{
+#table1 tbody th{
     color:#fff;
     text-align: center;
     text-shadow:1px 1px 1px #8f2323;
@@ -46,7 +42,7 @@ layout: default
     border-bottom-left-radius:5px;
 }
 
-.table1 tbody td{
+#table1 tbody td{
     padding:10px;
     text-align:center;
     background-color:#ece3db;
@@ -60,12 +56,12 @@ layout: default
 </style>
 </head>
 <body>
-  <!--
-  <div id="table" />
+  
+  <table id="table1" />
               <h1>Dividend Profit for Holding ROCK2 Tokens</h1>
               <h3>per 1000 tokens</h3>
             
-            <table class="table1">
+            
 
                 <tbody>
                     <tr>
@@ -90,35 +86,7 @@ layout: default
                 </tbody>
             </table> 
   
-  -->
-  
-         <table id="table" border="1">
-            
-            <!-- The Row Number 0 -->
-            <tr>
-                <th>test</th>
-                <td></td>
-                <td></td>
-                <td></td>
 
-            </tr>
-            <!-- End Row Number 0 -->
-            
-            
-            <tr>
-            <th>test</th>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            
-            <tr>
-            <th>Test</th>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>  
-        </table>
            <!-- <div id="results" /> -->
   <script type="text/javascript">
 const apiEndpoints = [
@@ -194,23 +162,21 @@ function stuffToDoAfterLoadedData(data) {
     Monthly Profit: $${monthlyProfit} ROI: ${monthlyROI}%
     Yearly Profit: $${yearlyProfit} ROI: ${yearlyROI}%`
     */
-                var array = [[yearlyROI,${blockReward},"C1"],
+            var array = [[yearlyROI,yearlyProfit,marketPriceBTC],
                          ["A2","B2","C2"],
                          ["A3","B3","C3"]],
 
-                table = document.getElementById("table");
-        
-        // Method 1
+                table = document.getElementById("table1");
        // rows
-        for(var i = 0; i < table.rows.length; i++)
-        {
+              for(var i = 0; i < table1.rows.length; i++)
+              {
           // cells
-          for(var j = 1; j < table.rows[i].cells.length; j++)
-          {
+                for(var j = 1; j < table1.rows[i].cells.length; j++)
+                {
               table.rows[i].cells[j].innerHTML = array[i][j-1];
-          }
+                }
+             }
         }
-}
 </script>
 </body>
 </html>
