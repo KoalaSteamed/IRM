@@ -60,6 +60,7 @@ layout: default
 </style>
 </head>
 <body>
+  <!--
   <div id="table" />
               <h1>Dividend Profit for Holding ROCK2 Tokens</h1>
               <h3>per 1000 tokens</h3>
@@ -87,7 +88,9 @@ layout: default
                     </tr>
 
                 </tbody>
-            </table>
+            </table> 
+  
+  -->
   
          <table id="table" border="1">
             
@@ -184,14 +187,14 @@ function stuffToDoAfterLoadedData(data) {
     const yearlyProfit = Math.round(monthlyProfit*12*100)/100
     const yearlyROI = Math.round(monthlyROI*12*100)/100
     
-    document.getElementById("results").textContent =`   ${blockReward}
+    /*document.getElementById("results").textContent =`   ${blockReward}
     ${output1}
     ${marketPriceROCK2}
     Per 1000 tokens
     Monthly Profit: $${monthlyProfit} ROI: ${monthlyROI}%
     Yearly Profit: $${yearlyProfit} ROI: ${yearlyROI}%`
-    
-                var array = [[yearlyROI,"B1","C1"],
+    */
+                var array = [[yearlyROI,${blockReward},"C1"],
                          ["A2","B2","C2"],
                          ["A3","B3","C3"]],
 
