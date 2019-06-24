@@ -55,38 +55,32 @@ layout: default
     }}
 </style>
 </head>
-<body>
-  
+<body> 
   <table id="table1" />
-              <h1>Dividend Profit for Holding ROCK2 Tokens</h1>
-              <h3>per 1000 tokens</h3>
-            
-            
-
-                <tbody>
-                    <tr>
-                        <th>Daily Profit</th>
-                        <td>test4</td>
-                        <td>1 GB</td>
-                        <td>2 GB</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Monthly Profit</th>
-                        <td>50 GB</td>
-                        <td>100 GB</td>
-                        <td>150 GB</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Yearly Profit</th>
-                        <td>Unlimited</td>
-                        <td>Unlimited</td>
-                        <td>Unlimited</td>
-                    </tr>
-
-                </tbody>
-            </table> 
-  
-
+  <h1>Dividend Profit for Holding ROCK2 Tokens</h1>
+  <h3>per 1000 tokens</h3>
+    <tbody>
+      <tr>
+        <th>Daily Profit</th>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>Monthly Profit</th>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">Yearly Profit</th>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table> 
+ 
            <!-- <div id="results" /> -->
   <script type="text/javascript">
 const apiEndpoints = [
@@ -150,6 +144,8 @@ function stuffToDoAfterLoadedData(data) {
     const monthlyProfitPerToken = (investorProfitPercentage*totalMonthlyRevenue)/totalTokens
     const output1 = currentDifficulty + "\n" 
     const output2 = marketPriceBTC
+    const dailyProfit = 1
+    const dailyROI = 1
     const monthlyProfit = Math.round(tokensHeld * monthlyProfitPerToken*100)/100
     const monthlyROI = Math.round((monthlyProfit*10000)/tokenValue)/100
     const yearlyProfit = Math.round(monthlyProfit*12*100)/100
@@ -162,18 +158,16 @@ function stuffToDoAfterLoadedData(data) {
     Monthly Profit: $${monthlyProfit} ROI: ${monthlyROI}%
     Yearly Profit: $${yearlyProfit} ROI: ${yearlyROI}%`
     */
-            var array = [[yearlyROI,yearlyProfit,marketPriceBTC],
-                         ["A2","B2","C2"],
-                         ["A3","B3","C3"]],
+            var array = [[dailyProfit,    dailyROI,     dailyROI],
+                         [monthlyProfit,  monthlyROI,   monthlyROI],
+                         [yearlyProfit,   yearlyROI,    yearlyROI]],
 
-                table = document.getElementById("table1");
-       // rows
+              table = document.getElementById("table1");
               for(var i = 0; i < table1.rows.length; i++)
               {
-          // cells
                 for(var j = 1; j < table1.rows[i].cells.length; j++)
                 {
-              table.rows[i].cells[j].innerHTML = array[i][j-1];
+                table.rows[i].cells[j].innerHTML = array[i][j-1];
                 }
              }
         }
