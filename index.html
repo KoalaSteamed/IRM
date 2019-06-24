@@ -5,7 +5,9 @@ layout: default
 <head>
 <title>Ice Rock Mining ROI</title>
 <style type="text/css">
-
+#results{
+white-space: pre;
+}
   #table1{
     font-family: "Trebuchet MS", sans-serif;
     font-size: 16px;
@@ -58,7 +60,7 @@ layout: default
 <body> 
   <table id="table1" />
   <h1>Dividend Profit for Holding ROCK2 Tokens</h1>
-  <h3>per 1000 tokens</h3>
+  <div id="tokenValue" />
     <tbody>
       <tr>
         <th>Daily Profit</th>
@@ -81,7 +83,7 @@ layout: default
     </tbody>
   </table> 
  
-           <!-- <div id="results" /> -->
+  <div id="results" /> 
   <script type="text/javascript">
 const apiEndpoints = [
     'https://chain.api.btc.com/v3/block/latest',
@@ -144,8 +146,6 @@ function stuffToDoAfterLoadedData(data) {
     const tokensHeld = 1000
     const tokenValue = tokensHeld*marketPriceROCK2
     const monthlyProfitPerToken = (investorProfitPercentage*totalMonthlyRevenue)/totalTokens
-    const output1 = currentDifficulty + "\n" 
-    const output2 = marketPriceBTC
     const dailyProfit = Math.round(((tokensHeld * monthlyProfitPerToken)/30.44)*100)/100
     const dailyETH = Math.round((dailyProfit/marketPriceETH)*10000)/10000
     const dailyROI = Math.round((dailyProfit*10000)/tokenValue)/100
@@ -156,13 +156,14 @@ function stuffToDoAfterLoadedData(data) {
     const yearlyETH = Math.round((yearlyProfit/marketPriceETH)*10000)/10000
     const yearlyROI = Math.round(monthlyROI*12*100)/100
     
-    /*document.getElementById("results").textContent =`   ${blockReward}
-    ${output1}
-    ${marketPriceROCK2}
-    Per 1000 tokens
-    Monthly Profit: $${monthlyProfit} ROI: ${monthlyROI}%
-    Yearly Profit: $${yearlyProfit} ROI: ${yearlyROI}%`
-    */
+    document.getElementById("results").textContent =`   
+    ROCK2 market price: ${marketPriceROCK2}
+    BTC market price: ${marketPriceBTC}
+    ETH market price: ${marketPriceETH}
+    BTC difficulty: ${currentDifficulty} 
+    BTC block reward: ${blockReward}`
+     
+    document.getElementById("tokenValue").innerHTML = "<h3>per 1000 tokens ($" + tokenValue + ")</h3>"
             var array = [["$"+dailyProfit,    dailyETH+" ETH",     dailyROI+"% ROI"],
                          ["$"+monthlyProfit,  monthlyETH+" ETH",   monthlyROI+"% ROI"],
                          ["$"+yearlyProfit,   yearlyETH+" ETH",    yearlyROI+"% ROI"]],
