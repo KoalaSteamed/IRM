@@ -157,11 +157,11 @@ function stuffToDoAfterLoadedData(data) {
     const yearlyROI = Math.round(monthlyROI*12*100)/100
     
     document.getElementById("results").textContent =`   
-    ROCK2 market price: ${marketPriceROCK2}
-    BTC market price: ${marketPriceBTC}
-    ETH market price: ${marketPriceETH}
+    ROCK2 market price: $${marketPriceROCK2}
+    BTC market price: $${marketPriceBTC}
+    ETH market price: $${marketPriceETH}
     BTC difficulty: ${currentDifficulty} 
-    BTC block reward: ${blockReward}`
+    BTC block reward: ${blockReward} Bitcoins`
      
     document.getElementById("tokenValue").innerHTML = "<h3>per 1000 tokens ($" + tokenValue + ")</h3>"
             var array = [["$"+dailyProfit,    dailyETH+" ETH",     dailyROI+"% ROI"],
