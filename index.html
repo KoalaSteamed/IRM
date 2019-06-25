@@ -59,7 +59,7 @@ white-space: pre;
 </head>
 <body> 
   <table id="table1" />
-  <h1>Dividend Profit for Holding ROCK2 Tokens</h1>
+  <h1>ROCK2 Dividends Live Calculator</h1>
   <div id="tokenValue" />
     <tbody>
       <tr>
@@ -158,14 +158,15 @@ function stuffToDoAfterLoadedData(data) {
     
     document.getElementById("results").textContent =`   
     ROCK2 market price: $${marketPriceROCK2}
-    BTC market price: $${marketPriceBTC}
-    ETH market price: $${marketPriceETH}
-    BTC difficulty: ${currentDifficulty} 
-    BTC block reward: ${blockReward} Bitcoins`
-     
+    Bitcoin market price: $${marketPriceBTC}
+    Ethereum market price: $${marketPriceETH}
+    Bitcoin difficulty: ${currentDifficulty} 
+    Block reward: ${blockReward} Bitcoins`
+    
+    // [["$"+dailyProfit,    dailyETH+" ETH",     dailyROI+"% ROI"],
     document.getElementById("tokenValue").innerHTML = "<h3>per 1000 tokens ($" + tokenValue + ")</h3>"
-            var array = [["$"+dailyProfit,    dailyETH+" ETH",     dailyROI+"% ROI"],
-                         ["$"+monthlyProfit,  monthlyETH+" ETH",   monthlyROI+"% ROI"],
+            
+            var array = [["$"+monthlyProfit,  monthlyETH+" ETH",   monthlyROI+"% ROI"],
                          ["$"+yearlyProfit,   yearlyETH+" ETH",    yearlyROI+"% ROI"]],
 
               table = document.getElementById("table1");
