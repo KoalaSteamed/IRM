@@ -149,22 +149,16 @@ function stuffToDoAfterLoadedData(data) {
     const yearlyProfit = Math.round(monthlyProfit*12*100)/100
     const yearlyETH = Math.round((yearlyProfit/marketPriceETH)*10000)/10000
     const yearlyROI = Math.round(monthlyROI*12*100)/100
-    const text = "Unofficial ROCK2 dividends calculator \n Profits may change rapidly as they are dependent on the price of BTC and the BTC Difficulty"
-        
+         
     document.getElementById("results").textContent =`   
     ROCK2 market price: $${marketPriceROCK2}
     Bitcoin market price: $${marketPriceBTC}
     Ethereum market price: $${marketPriceETH}
     Bitcoin difficulty: ${currentDifficulty} 
-    Block reward: ${blockReward} Bitcoins
-        
-    
- ${text}`
+    Block reward: ${blockReward} Bitcoins`
        
     // [["$"+dailyProfit,    dailyETH+" ETH",     dailyROI+"% ROI"],
     document.getElementById("tokenValue").innerHTML = "<h3>per 1000 tokens ($" + tokenValue + ")</h3>"
-
-  
             
             var array = [["$"+monthlyProfit,  monthlyETH+" ETH",   monthlyROI+"% ROI"],
                          ["$"+yearlyProfit,   yearlyETH+" ETH",    yearlyROI+"% ROI"]],
