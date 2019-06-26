@@ -6,8 +6,11 @@ layout: default
 <title>Ice Rock Mining ROI</title>
 <style type="text/css">
 #results{
-white-space: pre;
-}
+  white-space: pre;
+  }
+#results{  
+  <p style="color:red">
+  }
   #table1{
     font-family: "Trebuchet MS", sans-serif;
     font-size: 16px;
@@ -79,7 +82,7 @@ white-space: pre;
   </table> 
  
   <div id="results" /> 
-  <p>Live Calculations</P>
+  <div id="footer" /> 
   <script type="text/javascript">
 const apiEndpoints = [
     'https://chain.api.btc.com/v3/block/latest',
@@ -160,6 +163,8 @@ function stuffToDoAfterLoadedData(data) {
     
     // [["$"+dailyProfit,    dailyETH+" ETH",     dailyROI+"% ROI"],
     document.getElementById("tokenValue").innerHTML = "<h3>per 1000 tokens ($" + tokenValue + ")</h3>"
+    document.getElementById("footer").innerHTML = "Unofficial ROCK2 dividends calculator. Profits may change rapidly as they are dependent on the price of BTC and the BTC Difficulty"
+  
             
             var array = [["$"+monthlyProfit,  monthlyETH+" ETH",   monthlyROI+"% ROI"],
                          ["$"+yearlyProfit,   yearlyETH+" ETH",    yearlyROI+"% ROI"]],
