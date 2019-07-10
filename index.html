@@ -139,6 +139,7 @@ function stuffToDoAfterLoadedData(data) {
     //outputs
     const tokensHeld = 1000
     const tokenValue = tokensHeld*marketPriceROCK2
+    const tokenValueRound = Math.round((tokensHeld*marketPriceROCK2)*1000)/1000
     const monthlyProfitPerToken = (investorProfitPercentage*totalMonthlyRevenue)/totalTokens
     const dailyProfit = Math.round(((tokensHeld * monthlyProfitPerToken)/30.44)*100)/100
     const dailyETH = Math.round((dailyProfit/marketPriceETH)*10000)/10000
@@ -158,7 +159,7 @@ function stuffToDoAfterLoadedData(data) {
     Block reward: ${blockReward} Bitcoins`
        
     // [["$"+dailyProfit,    dailyETH+" ETH",     dailyROI+"% ROI"],
-    document.getElementById("tokenValue").innerHTML = "<h3>per 1000 tokens ($" + tokenValue + ")</h3>"
+    document.getElementById("tokenValue").innerHTML = "<h3>per 1000 tokens ($" + tokenValueRound + ")</h3>"
             
             var array = [["$"+monthlyProfit,  monthlyETH+" ETH",   monthlyROI+"% ROI"],
                          ["$"+yearlyProfit,   yearlyETH+" ETH",    yearlyROI+"% ROI"]],
