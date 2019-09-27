@@ -120,13 +120,13 @@ function stuffToDoAfterLoadedData(data) {
     
     //ASIC S9
     const asic_S9_Revenue = (blockReward*marketPriceBTC)/(currentDifficulty*(2**32)/(13500*1000000000)/86400)
-    const asic_S9_GovTax = asic_S9_Revenue*0.3
+    const asic_S9_GovTax = asic_S9_Revenue*0.03
     const asic_S9_Expense = (electricityPrice *1323*24)/1000
     const asic_S9_Profit = asic_S9_Revenue-asic_S9_Expense-asic_S9_GovTax
     
     //ASIC T17
     const asic_T17_Revenue = (blockReward*marketPriceBTC)/(currentDifficulty*(2**32)/(40000*1000000000)/86400)
-    const asic_T17_GovTax = asic_T17_Revenue*0.3
+    const asic_T17_GovTax = asic_T17_Revenue*0.03
     const asic_T17_Expense = (electricityPrice*2200*24)/1000
     const asic_T17_Profit = asic_T17_Revenue-asic_T17_Expense-asic_T17_GovTax
     
