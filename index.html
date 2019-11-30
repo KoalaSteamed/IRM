@@ -111,7 +111,7 @@ function stuffToDoAfterLoadedData(data) {
     const asic_T17_Count = 600
     const miningEfficiency = 0.704
     const electricityPriceOld = 0.0422
-    const electricityPrice = electricityPriceOld*1.15
+    const electricityPrice = electricityPriceOld*1
     
     //Profit % shares
     const investorProft = 0.45
@@ -119,7 +119,7 @@ function stuffToDoAfterLoadedData(data) {
     const iceRockManagementProfit = 0.1
     
     //ASIC S9
-    const asic_S9_Revenue = ((blockReward*marketPriceBTC)/(currentDifficulty*(2**32)/(13500*1000000000)/86400))*0.97
+    const asic_S9_Revenue = ((blockReward*marketPriceBTC)/(currentDifficulty*(2**32)/(13500*1000000000)/86400))
     const asic_S9_GovTax = asic_S9_Revenue*0.03
     const asic_S9_Expense = (electricityPrice *1323*24)/1000
     const asic_S9_Profit = asic_S9_Revenue-asic_S9_Expense
