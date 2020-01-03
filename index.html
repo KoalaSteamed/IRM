@@ -97,7 +97,7 @@ Promise.all(apiEndpoints.map(loadApiData))
 function stuffToDoAfterLoadedData(data) {
     //Data in
     const currentDifficulty = data[0]["data"]["difficulty"]
-    const rewardBlock = (data[0]["data"]["reward_block"])/2
+    const rewardBlock = data[0]["data"]["reward_block"]
     const rewardFees = data[0]["data"]["reward_fees"]
     const marketPriceBTC = data[1]["bitcoin"]["usd"]
     const marketPriceROCK2 = data[2]["ice-rock-mining"]["usd"]
