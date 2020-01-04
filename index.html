@@ -97,7 +97,7 @@ Promise.all(apiEndpoints.map(loadApiData))
 function stuffToDoAfterLoadedData(data) {
     //Data in
     const currentDifficulty = data[0]["data"]["difficulty"]
-    const rewardBlock = (data[0]["data"]["reward_block"])/2
+    const rewardBlock = data[0]["data"]["reward_block"]
     const rewardFees = data[0]["data"]["reward_fees"]
     const marketPriceBTC = data[1]["bitcoin"]["usd"]
     const marketPriceROCK2 = data[2]["ice-rock-mining"]["usd"]
@@ -107,7 +107,7 @@ function stuffToDoAfterLoadedData(data) {
     const averageDaysMonth = 30.44
     const blockReward = (rewardBlock + rewardFees)/100000000
     const totalTokens = 15724272
-    const asic_S9_Count = 0
+    const asic_S9_Count = 2000
     const asic_T17_Count = 600
     const miningEfficiency = 0.704
     const electricityPriceOld = 0.0422
@@ -158,8 +158,7 @@ function stuffToDoAfterLoadedData(data) {
     ROCK2 market price: $${marketPriceROCK2}
     Bitcoin market price: $${marketPriceBTC}
     Ethereum market price: $${marketPriceETH}
-    Bitcoin difficulty: ${currentDifficulty} 
-    S9 Count: ${asic_T17_Profit} 
+    Bitcoin difficulty: ${currentDifficulty}
     Block reward: ${blockReward} Bitcoins`
        
     // [["$"+dailyProfit,    dailyETH+" ETH",     dailyROI+"% ROI"],
