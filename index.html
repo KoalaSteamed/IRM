@@ -108,32 +108,41 @@ function stuffToDoAfterLoadedData(data) {
     const blockReward = (rewardBlock + rewardFees)/100000000
     const totalTokens = 15724272
     const asic_S9_Count = 2000
-    const asic_T17_Count = 600
+    const asic_T17_Count = 200
+    const asic_S17_Count = 300
     const miningEfficiency = 0.704
-    const electricityPriceOld = 0.0422
-    const electricityPrice = electricityPriceOld*1
+    const electricityPrice = 0.0422
     
     //Profit % shares
-    const investorProft = 0.45
-    const reinvestProfit = 0.45
+    const investorProft = 0.7
+    const reinvestProfit = 0.2
     const iceRockManagementProfit = 0.1
     
     //ASIC S9
     const asic_S9_Revenue = ((blockReward*marketPriceBTC)/(currentDifficulty*(2**32)/(13500*1000000000)/86400))
-    const asic_S9_GovTax = asic_S9_Revenue*0.03
     const asic_S9_Expense = (electricityPrice *1323*24)/1000
     const asic_S9_Profit = asic_S9_Revenue-asic_S9_Expense
     
     //ASIC T17
     const asic_T17_Revenue = ((blockReward*marketPriceBTC)/(currentDifficulty*(2**32)/(40000*1000000000)/86400))
-    const asic_T17_GovTax = asic_T17_Revenue*0.03
     const asic_T17_Expense = (electricityPrice*2200*24)/1000
     const asic_T17_Profit = asic_T17_Revenue-asic_T17_Expense
+  
+    //ASIC S17
+    const asic_S17_Revenue = ((blockReward*marketPriceBTC)/(currentDifficulty*(2**32)/(53000*1000000000)/86400))
+    const asic_S17_Expense = (electricityPrice*2385*24)/1000
+    const asic_S17_Profit = asic_S17_Revenue-asic_S17_Expense
     
     //Monthly calculation totals
-    const totalMonthlyRevenue = ((asic_S9_Revenue*asic_S9_Count)+(asic_T17_Revenue*asic_T17_Count))*30.44*miningEfficiency
-    const totalMonthlyProfit = ((asic_S9_Profit*asic_S9_Count)+(asic_T17_Profit*asic_T17_Count))*30.44*miningEfficiency
-    const totalMonthlyElectricity = ((asic_S9_Expense*asic_S9_Count)+(asic_T17_Expense*asic_T17_Count))*30.44
+    const totalMonthlyRevenue = ((asic_S9_Revenue*asic_S9_Count)
+                               +(asic_T17_Revenue*asic_T17_Count)
+                               +(asic_S17_Revenue*asic_S17_Count))*30.44*miningEfficiency
+    const totalMonthlyProfit = ((asic_S9_Profit*asic_S9_Count)
+                               +(asic_T17_Profit*asic_T17_Count)
+                               +(asic_S17_Profit*asic_S17_Count))*30.44*miningEfficiency
+    const totalMonthlyElectricity = ((asic_S9_Expense*asic_S9_Count)
+                                   +(asic_T17_Expense*asic_T17_Count)
+                                   +(asic_S17_Expense*asic_S17_Count))*30.44
     
     //Percentages
     const operatingCostPercentage = totalMonthlyElectricity/totalMonthlyRevenue
