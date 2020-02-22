@@ -162,7 +162,7 @@ function stuffToDoAfterLoadedData(data) {
     const yearlyProfit = Math.round(monthlyProfit*12*100)/100
     const yearlyETH = Math.round((yearlyProfit/marketPriceETH)*10000)/10000
     const yearlyROI = Math.round(monthlyROI*12*100)/100
-    const costPerTH = Math.round((((totalTokens*marketPriceROCK2)/50600)/investorProft)*100)/100
+    const costPerTH = Math.round((((totalTokens*marketPriceROCK2)/50600)/0.9)*100)/100
          
     document.getElementById("results").textContent =`   
     ROCK2 market price: $${marketPriceROCK2}
