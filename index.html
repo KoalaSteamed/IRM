@@ -162,6 +162,7 @@ function stuffToDoAfterLoadedData(data) {
     const yearlyProfit = Math.round(monthlyProfit*12*100)/100
     const yearlyETH = Math.round((yearlyProfit/marketPriceETH)*10000)/10000
     const yearlyROI = Math.round(monthlyROI*12*100)/100
+    const costPerTH = Math.round(((totalTokens*marketPriceROCK2)/50600)*100)/100
          
     document.getElementById("results").textContent =`   
     ROCK2 market price: $${marketPriceROCK2}
@@ -172,7 +173,9 @@ function stuffToDoAfterLoadedData(data) {
 
     ASIC S9 Count: ${asic_S9_Count}
     ASIC T17 Count: ${asic_T17_Count}
-    ASIC S17 Count: ${asic_S17_Count}`
+    ASIC S17 Count: ${asic_S17_Count}
+
+    Market purchase cost per TH: ${costPerTH}`
        
     // [["$"+dailyProfit,    dailyETH+" ETH",     dailyROI+"% ROI"],
     document.getElementById("tokenValue").innerHTML = "<h3>per 1000 tokens ($" + tokenValueRound + ")</h3>"
